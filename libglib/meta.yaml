@@ -1,0 +1,26 @@
+package:
+  name: libglib
+  version: 2.44.0
+
+source:
+  fn: glib-2.44.0.tar.xz
+  url:  ftp://ftp.gnome.org/pub/gnome/sources/glib/2.44/glib-2.44.0.tar.xz
+  md5: 74cf7b4ea200b76e42a4c22c8daf0f93
+
+build:
+  number: 1
+
+about:
+  home: https://developer.gnome.org/glib/stable/
+  license: GNU Library General Public License (GNU LGPL)
+  summary: GLib is a general-purpose utility library, which provides many useful data types, macros, type conversions, string utilities, file utilities, a mainloop abstraction, and so on.
+
+requirements:
+  build:
+    - python
+    - libffi
+    - gcc
+
+  run:
+    - libffi
+    - libgcc
