@@ -33,12 +33,12 @@ fi
 
 if [ `uname` == Linux ]; then
   ./bootstrap.sh \
-    --prefix="${PREFIX}/" --libdir="${PREFIX}/lib/" \
+    --prefix="${PREFIX}/" --libdir="${PREFIX}/lib/" --with-python=${PYTHON} --with-libraries=all \
     | tee bootstrap.log 2>&1
 
   ./b2 \
-    variant=release address-model=${ARCH} architecture=x86 \
-    threading=multi link=shared toolset=gcc include=${INCLUDE_PATH} \
+    variant=release \
+    threading=multi link=shared toolset=gcc cxxflags="-std=c++11" include=${INCLUDE_PATH} \
     -j${CPU_COUNT} \
     install | tee b2.log 2>&1
 fi
