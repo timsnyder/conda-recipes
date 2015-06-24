@@ -2,6 +2,9 @@ package:
   name: web.py
   version: 0.37.pr239
 
+build:
+  number: 0
+
 source:
   git_tag: 13837c87e4541f2c1f179ee8e8ce4b5af2d86012
   git_url: https://github.com/webpy/webpy.git
