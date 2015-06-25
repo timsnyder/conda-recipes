@@ -1,0 +1,20 @@
+package:
+  name: pystache
+  version: 0.5.4
+
+build:
+  number: 0
+
+source:
+  git_tag: v0.5.4
+  git_url: https://github.com/defunkt/pystache.git
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+about:
+  home: https://pypi.python.org/pypi/pystache
