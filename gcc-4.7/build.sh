@@ -3,7 +3,8 @@
     --with-gmp=$PREFIX \
     --with-mpfr=$PREFIX \
     --with-mpc=$PREFIX \
-    --with-ppl=$PREFIX
+    --with-ppl=$PREFIX \
+    --enable-languages=c,c++,fortran
 
-make
+nice make -j16
 make install
