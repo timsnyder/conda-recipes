@@ -12,6 +12,9 @@ set -o pipefail
 
 mkdir -vp ${PREFIX}/bin;
 
+export LIBRARY_PATH="$PREFIX/lib"
+export INCLUDE_PATH="$PREFIX/include"
+
 if [ `uname` == Darwin ]; then
     MACOSX_VERSION_MIN=10.8
     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
