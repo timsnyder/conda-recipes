@@ -4,7 +4,8 @@
     --with-mpfr=$PREFIX \
     --with-mpc=$PREFIX \
     --with-ppl=$PREFIX \
-    --enable-languages=c,c++,fortran
+    --enable-languages=c,c++,fortran \
+    --disable-multilib
 
 nice make -j16
 make install
