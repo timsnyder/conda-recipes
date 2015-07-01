@@ -40,7 +40,7 @@ if [ `uname` == Linux ]; then
     | tee bootstrap.log 2>&1
 
   ./b2 \
-    variant=release \
+    variant=release address-model=$ARCH \
     threading=multi link=shared toolset=gcc cxxflags="-std=c++11" include=${INCLUDE_PATH} \
     -j${CPU_COUNT} \
     install | tee b2.log 2>&1
