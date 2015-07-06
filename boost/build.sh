@@ -46,3 +46,16 @@ if [ `uname` == Linux ]; then
     install | tee b2.log 2>&1
 fi
 
+mkdir -p $PREFIX/lib/pkgconfig
+cat > $PREFIX/lib/pkgconfig/boost.pc <<END_PC
+prefix=$PREFIX
+exec_prefix=\${prefix}
+libdir=\${exec_prefix}/lib
+includedir=\${prefix}/include
+
+Name: boost
+Description: $(python -c 'import yaml; stream=open("'${RECIPE_DIR}'/meta.yaml","r"); y=yaml.load(stream); print y["about"]["summary"]')
+Version: $PKG_VERSION
+Libs: -L\${libdir}
+Cflags: -I\${includedir}
+END_PC
