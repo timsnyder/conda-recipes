@@ -1,11 +1,11 @@
 package:
   name: gcc
-  version: 4.9.1
+  version: 4.9.3
 
 source:
-  fn: gcc-4.9.1.tar.bz2
-  url: http://www.netgull.com/gcc/releases/gcc-4.9.1/gcc-4.9.1.tar.bz2
-  md5: fddf71348546af523353bd43d34919c1
+  fn: gcc-4.9.3.tar.bz2
+  url: http://mirrors.concertpass.com/gcc/releases/gcc-4.9.3/gcc-4.9.3.tar.bz2
+  md5: 6f831b4d251872736e8e9cc09746f327
 
 requirements:
   build:
