@@ -1,3 +1,4 @@
+ln -s $PREFIX/lib $PREFIX/lib64
 
 # handle building 32bit on 64bit host
 # https://gcc.gnu.org/ml/gcc-help/2010-09/msg00040.html
@@ -12,6 +13,7 @@ fi
 
 ./configure \
     --prefix=$PREFIX \
+    --libdir=$PREFIX/lib \
     --with-gmp=$PREFIX \
     --with-mpfr=$PREFIX \
     --with-mpc=$PREFIX \
@@ -21,3 +23,4 @@ fi
 
 nice make -j16
 make install
+rm $PREFIX/lib64
