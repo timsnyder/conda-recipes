@@ -4,7 +4,7 @@ CONFIG_OPTS=" "
 PATH=/usr/bin:/usr/sbin:/bin
 
 if [ `uname` == Linux ]; then
-    CONFIG_OPTS+=" -dbus"
+    CONFIG_OPTS+=" -dbus -qt-xcb"
     MAKE_JOBS=$CPU_COUNT
 fi
 
