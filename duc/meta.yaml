@@ -1,0 +1,23 @@
+package:
+  name: duc
+  version: 1.3.3
+
+build:
+  number: 0
+  string: TOOL_809_0
+
+source:
+  git_url: git@git.sarc.sas:spa/duc
+  git_tag: TOOL-809
+
+requirements:
+  build:
+    - libtokyocabinet
+
+  run:
+    - libtokyocabinet
+
+about:
+  license: GPLv2
+  summary: "DUC is a collection of tools for inspecting and visualizing disk usage." 
+  home: http://duc.zevv.nl/

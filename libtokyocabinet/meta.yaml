@@ -1,0 +1,18 @@
+package: 
+  name: libtokyocabinet
+  version: 1.4.48
+
+source:
+  fn: tokyocabinet-1.4.48.tar.gz
+  url: http://fallabs.com/tokyocabinet/tokyocabinet-1.4.48.tar.gz
+  sha1: b26a0a1ae7a05d2e1cc06cc518838cdd552e65aa
+
+requirements:
+  build:
+
+  run:
+
+about:
+  license: LGPL
+  summary: "Tokyo Cabinet is a library of routines for managing a file-based database"
+  home: http://fallabs.com/tokyocabinet

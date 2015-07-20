@@ -12,6 +12,9 @@ set -o pipefail
 
 mkdir -vp ${PREFIX}/bin;
 
+export LIBRARY_PATH="$PREFIX/lib"
+export INCLUDE_PATH="$PREFIX/include"
+
 if [ `uname` == Darwin ]; then
     MACOSX_VERSION_MIN=10.8
     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
@@ -37,9 +40,22 @@ if [ `uname` == Linux ]; then
     | tee bootstrap.log 2>&1
 
   ./b2 \
-    variant=release \
+    variant=release address-model=$ARCH \
     threading=multi link=shared toolset=gcc cxxflags="-std=c++11" include=${INCLUDE_PATH} \
     -j${CPU_COUNT} \
     install | tee b2.log 2>&1
 fi
 
+mkdir -p $PREFIX/lib/pkgconfig
+cat > $PREFIX/lib/pkgconfig/boost.pc <<END_PC
+prefix=$PREFIX
+exec_prefix=\${prefix}
+libdir=\${exec_prefix}/lib
+includedir=\${prefix}/include
+
+Name: boost
+Description: $(python -c 'import yaml; stream=open("'${RECIPE_DIR}'/meta.yaml","r"); y=yaml.load(stream); print y["about"]["summary"]')
+Version: $PKG_VERSION
+Libs: -L\${libdir}
+Cflags: -I\${includedir}
+END_PC
