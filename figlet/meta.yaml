@@ -1,0 +1,21 @@
+package:
+  name: figlet
+  version: 2.2.5
+
+build:
+  number: 1
+
+
+source:
+  fn: figlet-2.2.5.tar.gz
+  url: ftp://ftp.figlet.org/pub/figlet/program/unix/figlet-2.2.5.tar.gz
+  md5: d88cb33a14f1469fff975d021ae2858e
+
+requirements:
+  build:
+  run:
+
+about:
+  home: http://www.figlet.org
+  summary:  FIGlet is a program for making large letters out of ordinary text 
+  license: ???
