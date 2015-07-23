@@ -1,14 +1,10 @@
 package:
   name: bpython
-  version: !!str 0.12
+  version: 0.14.2
 
 source:
-  fn: bpython-0.12.tar.gz
-  url: https://pypi.python.org/packages/source/b/bpython/bpython-0.12.tar.gz
-  md5: 14cbe92620d386a769b3faa282a1d6c3
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  git_rev: 0.14.2-release
+  git_url: https://github.com/bpython/bpython.git
 
 build:
   #preserve_egg_dir: True
@@ -38,6 +34,8 @@ requirements:
     - python
     - pygments
     - urwid
+    - mock
+    - requests
 
 test:
   # Python imports
@@ -46,6 +44,8 @@ test:
     - bpython.translations
     - bpython
     - bpdb
+    - mock
+    - requests
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
