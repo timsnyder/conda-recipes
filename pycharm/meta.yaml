@@ -1,0 +1,11 @@
+package:
+  name: pycharm
+  version: !!str 4.5.3
+
+source:
+  fn: pycharm-community-4.5.3.tar.gz
+  url: https://download.jetbrains.com/python/pycharm-community-4.5.3.tar.gz
+
+about:
+  home: http://www.jetbrains.com/pycharm
+  license: Apache 2
