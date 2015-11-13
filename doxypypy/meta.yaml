@@ -3,6 +3,12 @@ package:
   version: 0.8.8.6
 
 build:
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.
+
+    - doxypypy = doxypypy.doxypypy:main
+
   number: 0
 
 source:
