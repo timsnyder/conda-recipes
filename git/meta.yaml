@@ -1,0 +1,33 @@
+package:
+  name: git
+  version: 2.6.3
+
+source:
+  fn: v2.6.3.tar.gz
+  url: https://github.com/git/git/archive/v2.6.3.tar.gz
+  md5: 65f659fb55ba49f17de03d1d9a859a83
+
+build:
+  # git hardcodes paths to external utilities (e.g. curl)
+  detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - expat
+    - curl
+    - openssl
+    - zlib
+  run:
+    - expat
+    - curl
+    - openssl
+    - zlib
+
+test:
+  commands:
+    - git --version
+
+about:
+  home: https://git-scm.com/
+  license: GPL v2 and LGPL 2.1
+  summary: distributed version control system
