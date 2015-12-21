@@ -3,7 +3,8 @@ package:
   version: 2.2.5
 
 build:
-  number: 1
+  number: 2
+  detect_binary_files_with_prefix: true
 
 
 source:
@@ -18,4 +19,4 @@ requirements:
 about:
   home: http://www.figlet.org
   summary:  FIGlet is a program for making large letters out of ordinary text 
-  license: ???
+  license: New BSD License?  (see http://www.figlet.org/figlet_history.html)

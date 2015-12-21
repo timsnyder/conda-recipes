@@ -10,4 +10,6 @@ if [[ "$ARCH" == "32" && "$(uname -m)" == "x86_64" ]]; then
     extra_configure="--build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu"
 fi
 
+make prefix=$PREFIX all
+make prefix=$PREFIX check
 make prefix=$PREFIX install
