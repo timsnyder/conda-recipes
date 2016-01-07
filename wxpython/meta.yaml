@@ -9,13 +9,17 @@ source:
     sha1: 48451763275cfe4e5bbec49ccd75bc9652cba719
 
 build:
-    number: 2
+    number: 3
 
 requirements:
     build:
         - python
+        - gcc-5
+        - binutils
     run:
         - python
+        - gcc-5
+        - binutils
 
 test:
     imports:

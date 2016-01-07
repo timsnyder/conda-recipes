@@ -5,7 +5,13 @@ mkdir -vp ${PREFIX}/bin;
 ARCH="$(uname 2>/dev/null)"
 
 export CFLAGS="-m64 -pipe -O2 -march=x86-64 -fPIC"
-export CXXLAGS="${CFLAGS}"
+# using gcc-5 will make __has_include(<type_traits>) return
+# true, causing wxWidgets to use type_traits but if you don't
+# also pass -std=c++11, then the compile will fail. ugh.
+# Seems like _has_include() should only return true if the include exists
+# and it can be compiled in the current mode the compiler is in given 
+# cmdline flags like -std
+export CXXFLAGS="${CFLAGS} -std=c++11"
 #export CPPFLAGS="-I${PREFIX}/include"
 #export LDFLAGS="-L${PREFIX}/lib64"
 
@@ -44,6 +50,12 @@ LinuxInstallation() {
     make install || return 1;
 
     pushd wxPython/;
+
+    # Python distutils is dumb and tries to build a .cpp file using gcc and CFLAGS. Work
+    # around by setting CFLAGS to same as CXXFLAGS. Luckily works because there aren't any real C
+    # files?
+    export CFLAGS="${CXXFLAGS}"
+
     # The python package name is also different than the conda package name, resulting
     # in a double-listed package.  Just call the python package wxpython
     perl -i.orig -pe "/setup\s*\(\s*name\s*=\s*'wxPython-common'/ and s/wxPython-common/wxpython/" setup.py
