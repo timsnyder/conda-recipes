@@ -44,6 +44,11 @@ LinuxInstallation() {
     make install || return 1;
 
     pushd wxPython/;
+    # The python package name is also different than the conda package name, resulting
+    # in a double-listed package.  Just call the python package wxpython
+    perl -i.orig -pe "/setup\s*\(\s*name\s*=\s*'wxPython-common'/ and s/wxPython-common/wxpython/" setup.py
+    grep wxPython-common setup.py && return 1
+
     ${PYTHON} -u ./setup.py install UNICODE=1 BUILD_BASE=build WX_CONFIG="${PREFIX}/bin/wx-config --prefix=${PREFIX}" \
         --record installed_files.txt --prefix="${PREFIX}" || return 1;
     popd;
