@@ -1,0 +1,5 @@
+The pyfsdb recipe lives in the conda.recipe of the pyfsdb repo
+git@git.sarc.sas:spa/pyfsdb/conda.recipe
+
+- tsnyder 25-Feb-16
+
