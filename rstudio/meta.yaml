@@ -10,6 +10,12 @@ source:
 # had it in Jan 2016
 # Then, I needed to have the mesa-libGL RPMs installed:
 #   % yum install mesa-libGL mesa-libGL-devel
+build:
+  number: 2
+
+extra:
+  build_reason: build on centos6.5
+
 requirements:
   build:
     - cmake
