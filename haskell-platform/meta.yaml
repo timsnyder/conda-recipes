@@ -1,11 +1,11 @@
 package:
   name: haskell-platform
-  version: 2013.2.0.0
+  version: 7.10.3
 
 source:
-  fn: haskell-platform-2013.2.0.0.tar.gz
-  url: http://www.haskell.org/platform/download/2013.2.0.0/haskell-platform-2013.2.0.0.tar.gz
-  sha1: 8669bb5add1826c0523fb130c095fb8bf23a30ce
+  fn: haskell-platform-7.10.3.tar.gz
+  url: http://haskell.org/platform/download/7.10.3/haskell-platform-7.10.3.tar.gz
+  sha256: 0b3f0fea3e4b55ef6a195d6c7a9c43c46caac950c241cfbfad63170c5cbeec07
 
 test:
   commands:
