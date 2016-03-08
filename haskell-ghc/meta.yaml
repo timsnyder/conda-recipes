@@ -1,0 +1,24 @@
+package:
+  name: haskell-ghc
+  version: 7.6.3
+
+source:
+  fn: ghc-7.6.3-x86_64-unknown-linux.tar.bz2
+  url: https://www.haskell.org/ghc/dist/7.6.3/ghc-7.6.3-x86_64-unknown-linux.tar.bz2
+  sha1: 46ec3f3352ff57fba0dcbc8d9c20f7bcb6924b77
+
+build:
+  detect_binary_files_with_prefix: true
+
+
+test:
+  commands:
+    - ghc --version
+    - ghci --version
+    - ghc-pkg --no-user-package-conf check
+
+
+about:
+  home: http://www.haskell.org/ghc/
+  license: The Glasgow Haskell Compiler License
+  summary: GHC is a state-of-the-art, open source, compiler and interactive environment for the functional language Haskell. 
