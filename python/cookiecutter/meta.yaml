@@ -1,44 +1,55 @@
 package:
   name: cookiecutter
-  version: {{ environ['GIT_DESCRIBE_TAG'] }}
+  version: "1.3.0"
 
 source:
-  # fn: cookiecutter-0.9.1.tar.gz
-  # url: https://pypi.python.org/packages/source/c/cookiecutter/cookiecutter-0.9.1.tar.gz
-  # md5: ea02caabba54412eb94f8bd0ac8c9ef8
+  fn: cookiecutter-1.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cookiecutter/cookiecutter-1.3.0.tar.gz
+  md5: 2350e11092a8ea6bed0df59697f77375
 #  patches:
    # List any patch files here
    # - fix.patch
-  git_tag: 0.9.1
-  git_url: https://github.com/audreyr/cookiecutter.git
 
 build:
+  # noarch_python: True
   # preserve_egg_dir: True
   entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cookiecutter = cookiecutter:main
+    #
+    # Would create an entry point called cookiecutter that calls cookiecutter.main()
 
-    - cookiecutter = cookiecutter.main:main
+    - cookiecutter = cookiecutter.cli:main
 
-  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
-
-  # Note that this will override the default build string with the Python
-  # and NumPy versions
-  string: {{ environ.get('GIT_BUILD_STR', '') }}
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
+    - future >=0.15.2
     - binaryornot >=0.2.0
-    - jinja2 >=2.4
-    - pyyaml >=3.10
+    - jinja2 >=2.7
+    - click >=5.0
+    - whichcraft >=0.1.1
+    - ruamel.base >=1.0.0
+    - ruamel.yaml >=0.10.2
+    - ruamel.ordereddict
 
   run:
     - python
+    - future >=0.15.2
     - binaryornot >=0.2.0
-    - jinja2 >=2.4
-    - pyyaml >=3.10
-
-
+    - jinja2 >=2.7
+    - click >=5.0
+    - whichcraft >=0.1.1
+    - ruamel.base >=1.0.0
+    - ruamel.yaml >=0.10.2
+    - ruamel.ordereddict
 
 test:
   # Python imports
