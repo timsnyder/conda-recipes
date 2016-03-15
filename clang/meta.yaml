@@ -1,0 +1,49 @@
+package:
+  name: clang
+  version: "3.8.0"
+
+source:
+  fn: llvm-3.8.0.src.tar.xz
+  url: http://llvm.org/releases/3.8.0/llvm-3.8.0.src.tar.xz
+  md5: 07a7a74f3c6bd65de4702bf941b511a0
+
+extra:
+  sources:
+    tools/clang:
+      fn: cfe-3.8.0.src.tar.xz
+      url: http://llvm.org/releases/3.8.0/cfe-3.8.0.src.tar.xz
+      md5: cc99e7019bb74e6459e80863606250c5
+    tools/clang/tools:
+      fn: clang-tools-extra-3.8.0.src.tar.xz
+      url: http://llvm.org/releases/3.8.0/clang-tools-extra-3.8.0.src.tar.xz
+      md5: c2344f50e0eea0b402f0092a80ddc036
+    projects:
+      fn: compiler-rt-3.8.0.src.tar.xz
+      url: http://llvm.org/releases/3.8.0/compiler-rt-3.8.0.src.tar.xz
+      md5: d6fcbe14352ffb708e4d1ac2e48bb025
+
+build:
+  detect_binary_files_with_prefix: true # [not linux32]
+  number: 0
+
+requirements:
+  build:
+    - python
+    - gcc 4.7.4
+    - cmake
+    - zlib
+    - sphinx
+    - doxygen
+    - ninja
+  run:
+    - gcc 4.7.4
+    - zlib
+
+test:
+  commands:
+    - clang --help
+
+about:
+  home: http://clang.llvm.org/
+  summary: C, C++, Objective C and Objective C++ front-end for the LLVM compiler.
+  license:  University of Illinois/NCSA Open Source License (http://www.opensource.org/licenses/UoI-NCSA.php)
