@@ -28,27 +28,27 @@ extra:
 
 build:
   detect_binary_files_with_prefix: true # [not linux32]
-  number: 2
+  string: gcc473_0
 
 requirements:
   build:
     - python
-    - gcc
+    - gcc 4.7.3
     - cmake
     - zlib
     - sphinx
     - ninja
   run:
-    - libgcc
-    - isl 0.12.2 0
+    - gcc 4.7*
     - zlib
 
 test:
   commands:
     - clang --version
-    - /bin/sh -ex ${RECIPE_DIR}/post-link.sh
+    #- /bin/sh -ex ${RECIPE_DIR}/post-link.sh
 
 about:
   home: http://clang.llvm.org/
   summary: C, C++, Objective C and Objective C++ front-end for the LLVM compiler.
   license:  University of Illinois/NCSA Open Source License (http://www.opensource.org/licenses/UoI-NCSA.php)
+  license_file: llvm-3.8.0.src/LICENSE.TXT

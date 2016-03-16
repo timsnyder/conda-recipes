@@ -11,6 +11,13 @@ mv ../cfe/* tools/clang
 #mv ../clang-tools-extra/*/* tools/clang/tools
 mv ../projects/*/* projects
 
+if [ "$(uname)" != "Darwin" ]; then
+    # For reference during post-link.sh, record some
+    # details about the OS this binary was produced with.
+    mkdir -p "${PREFIX}/share"
+    cat /etc/*-release > "${PREFIX}/share/conda-clang-build-machine-os-details"
+fi
+
 mkdir build
 cd build
 
@@ -19,6 +26,7 @@ cd build
 
 # cmake rpath options are discussed in:
 # https://cmake.org/Wiki/CMake_RPATH_handling
+    #-DCMAKE_C_FLAGS="-D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1=1 -D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2=1 -D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4=1 -D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8=1" \
 
 cmake \
     -DCMAKE_INSTALL_PREFIX=$PREFIX            \
@@ -27,7 +35,6 @@ cmake \
     -DCMAKE_SKIP_BUILD_RPATH=FALSE            \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE     \
     -DCMAKE_INSTALL_RPATH="${PREFIX}/lib"     \
-    -DCMAKE_C_FLAGS="-D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1=1 -D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2=1 -D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4=1 -D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8=1" \
     -DCMAKE_CXX_LINK_FLAGS="-L${PREFIX}/lib"  \
     -DCMAKE_BUILD_TYPE=Release                \
     -DGCC_INSTALL_PREFIX=$PREFIX              \
@@ -37,5 +44,5 @@ cmake \
     -Wno-dev \
     ..
 
-nice cmake --build .
+cmake --build .
 cmake --build . --target install
