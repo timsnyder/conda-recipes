@@ -28,7 +28,7 @@ extra:
 
 build:
   detect_binary_files_with_prefix: true # [not linux32]
-  number: 0
+  number: 2
 
 requirements:
   build:
@@ -39,12 +39,14 @@ requirements:
     - sphinx
     - ninja
   run:
-    - gcc
+    - libgcc
+    - isl 0.12.2 0
     - zlib
 
 test:
   commands:
-    - clang --help
+    - clang --version
+    - /bin/sh -ex ${RECIPE_DIR}/post-link.sh
 
 about:
   home: http://clang.llvm.org/
