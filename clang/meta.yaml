@@ -9,14 +9,18 @@ source:
 
 extra:
   sources:
-    tools/clang:
+    cfe:
       fn: cfe-3.8.0.src.tar.xz
       url: http://llvm.org/releases/3.8.0/cfe-3.8.0.src.tar.xz
       md5: cc99e7019bb74e6459e80863606250c5
-    tools/clang/tools:
-      fn: clang-tools-extra-3.8.0.src.tar.xz
-      url: http://llvm.org/releases/3.8.0/clang-tools-extra-3.8.0.src.tar.xz
-      md5: c2344f50e0eea0b402f0092a80ddc036
+    # Give up on clang-tools-extra for now because clang-tidy's build seems to expect
+    # that we've already built and installed the StaticAnalyzer library
+    # FAILED: /sarc/spa/users/tsnyder/conda-envs/_build_placehold_placehold_placehold_placehol/bin/g++   -DCLANG_ENABLE_ARCMT -DCLANG_ENABLE_OBJC_REWRITER -DCLANG_ENABLE_STATIC_ANALYZER -DGTEST_HAS_RTTI=0 -D_DEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -fPIC -fvisibility-inlines-hidden -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -pedantic -Wno-long-long -Wno-maybe-uninitialized -Wdelete-non-virtual-dtor -Wno-comment -std=c++11 -ffunction-sections -fdata-sections -fno-common -Woverloaded-virtual -fno-strict-aliasing -O3  -Itools/clang/tools/clang-tidy -I../tools/clang/tools/clang-tidy -I../tools/clang/include -Itools/clang/include -Iinclude -I../include    -UNDEBUG  -fno-exceptions -fno-rtti -MMD -MT tools/clang/tools/clang-tidy/CMakeFiles/clangTidy.dir/ClangTidy.cpp.o -MF tools/clang/tools/clang-tidy/CMakeFiles/clangTidy.dir/ClangTidy.cpp.o.d -o tools/clang/tools/clang-tidy/CMakeFiles/clangTidy.dir/ClangTidy.cpp.o -c ../tools/clang/tools/clang-tidy/ClangTidy.cpp
+    # ../tools/clang/tools/clang-tidy/ClangTidy.cpp:61:61: fatal error: ../../../lib/StaticAnalyzer/Checkers/Checkers.inc: No such file or directory
+    # clang-tools-extra:
+    #   fn: clang-tools-extra-3.8.0.src.tar.xz
+    #   url: http://llvm.org/releases/3.8.0/clang-tools-extra-3.8.0.src.tar.xz
+    #   md5: c2344f50e0eea0b402f0092a80ddc036
     projects:
       fn: compiler-rt-3.8.0.src.tar.xz
       url: http://llvm.org/releases/3.8.0/compiler-rt-3.8.0.src.tar.xz
@@ -29,14 +33,13 @@ build:
 requirements:
   build:
     - python
-    - gcc 4.7.4
+    - gcc
     - cmake
     - zlib
     - sphinx
-    - doxygen
     - ninja
   run:
-    - gcc 4.7.4
+    - gcc
     - zlib
 
 test:

@@ -1,15 +1,15 @@
 #!/bin/bash
 
-set -e
+set -ex
 
+# Download additional source code and move into required position
 # Important to run with Python from *root* because conda-build is installed there
 CONDA_PYTHON=$(conda info --root)/bin/python
 ${CONDA_PYTHON} ${RECIPE_DIR}/download-extra-sources.py
-
-mkdir -p tools/clang
-tar --strip-components=1 --directory=tools/clang       -xJf ./cfe-3.8.0.src.tar.xz 
-tar --strip-components=1 --directory=tools/clang/tools -xJf ./clang-tools-extra-3.8.0.src.tar.xz
-tar --strip-components=1 --directory=projects          -xJf ./compiler-rt-3.8.0.src.tar.xz
+mv ../cfe/* tools/clang
+# see meta.yaml for reasons we're not building tools-extra right now
+#mv ../clang-tools-extra/*/* tools/clang/tools
+mv ../projects/*/* projects
 
 mkdir build
 cd build
@@ -33,8 +33,9 @@ cmake \
     -DGCC_INSTALL_PREFIX=$PREFIX              \
     -DLLVM_ENABLE_ASSERTIONS=true             \
     -DLLVM_ENABLE_SPHINX=true                 \
+    -G "Ninja" \
     -Wno-dev \
     ..
 
-cmake --build .
+nice cmake --build .
 cmake --build . --target install
