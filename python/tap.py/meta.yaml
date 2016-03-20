@@ -1,24 +1,28 @@
 package:
-  name: mock
-  version: "1.3.0"
+  name: tap.py
+  version: "1.8"
 
 source:
-  fn: mock-1.3.0.tar.gz
-  url: https://pypi.python.org/packages/source/m/mock/mock-1.3.0.tar.gz
-  md5: 73ee8a4afb3ff4da1b4afa287f39fdeb
+  fn: tap.py-1.8.tar.gz
+  url: https://pypi.python.org/packages/source/t/tap.py/tap.py-1.8.tar.gz
+  md5: fa48198ddf0ac8f183c32d252b25e827
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # entry_points:
+  # noarch_python: True
+  preserve_egg_dir: True
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - mock = mock:main
+    # - tap.py = tap.py:main
     #
-    # Would create an entry point called mock that calls mock.main()
+    # Would create an entry point called tap.py that calls tap.py.main()
 
+    - tappy = tap.main:main
+    - tap = tap.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -28,36 +32,44 @@ requirements:
   build:
     - python
     - setuptools
-    - pbr
+    - nose
+    - pygments
+    - pytest
+    - babel
 
   run:
     - python
-    - pbr
-    - six
-    - funcsigs
-
+    - setuptools
+    - nose
+    - pygments
+    - pytest
 
 test:
   # Python imports
   imports:
-    - mock
+    - tap
+    - tap.plugins
+    - tap.tests
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - tappy --help
+    - tap --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
+    - mock
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://www.voidspace.org.uk/python/mock/
+  home: https://github.com/mblayman/tappy
   license: BSD License
-  summary: 'Rolling backport of unittest.mock for all Pythons'
+  summary: 'Test Anything Protocol (TAP) tools'
 
 # See
 # http://docs.continuum.io/conda/build.html for
