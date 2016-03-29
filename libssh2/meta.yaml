@@ -1,0 +1,27 @@
+package:
+  name: libssh2
+  version: !!str 1.7.0
+
+source:
+  git_rev: libssh2-1.7.0
+  git_url: https://github.com/libssh2/libssh2.git
+
+build:
+  detect_binary_files_with_prefix: true # [not linux32]
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - system
+    - cmake
+    - openssl
+  run:
+    - openssl
+
+about:
+  home: https://www.libssh2.org
+  summary: libssh2 is a client-side C library implementing the SSH2 protocol
+  license: BSD

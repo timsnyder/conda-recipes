@@ -1,0 +1,30 @@
+package:
+  name: libgit2
+  version: !!str 0.24.0
+
+source:
+  git_rev: v0.24.0
+  git_url: https://github.com/libgit2/libgit2.git
+
+build:
+  detect_binary_files_with_prefix: true # [not linux32]
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - cmake >=2.8
+    - gcc                     [linux]
+    - openssl
+    - pkg-config
+    - libssh2
+  run:
+    - openssl
+    - libssh2
+
+about:
+  home: https://libgit2.github.com
+  summary: libgit2 shared library implements the core of Git.
+  license: GPLv2 with linking exception.
