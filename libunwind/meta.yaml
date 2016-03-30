@@ -1,0 +1,23 @@
+package:
+  name: libunwind
+  version: !!str 0.99beta
+
+source:
+  fn: libunwind-0.99-beta.tar.gz
+  url: http://download.savannah.gnu.org/releases/libunwind/libunwind-0.99-beta.tar.gz
+
+build:
+  detect_binary_files_with_prefix: true # [not linux32]
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - system
+
+about:
+  home: http://www.nongnu.org/libunwind/
+  summary: Defines a portable and efficient C programming interface (API) to determine the call-chain of a program
+  license: X11 license
