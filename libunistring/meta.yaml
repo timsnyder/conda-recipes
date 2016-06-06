@@ -1,0 +1,23 @@
+package:
+  name: libunistring
+  version: 0.9.5
+
+build:
+  number: 1
+  detect_binary_files_with_prefix: true
+
+
+source:
+  fn: libunistring-0.9.5.tar.xz
+  url: http://ftp.gnu.org/gnu/libunistring/libunistring-0.9.5.tar.xz
+  md5: 6f8766d0b0497380d725639e19c04310
+
+requirements:
+  build:
+  run:
+
+about:
+  home: https://www.gnu.org/software/libunistring
+  summary:  This library provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.
+  license: GPL3
+  license_file: COPYING.LIB

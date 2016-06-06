@@ -1,0 +1,30 @@
+package:
+  name: libgc
+  version: 7.4.2
+
+build:
+  number: 1
+  detect_binary_files_with_prefix: true
+
+
+source:
+  fn: gc-7.4.2.tar.gz
+  url: http://hboehm.info/gc/gc_source/gc-7.4.2.tar.gz
+  md5: 12c05fd2811d989341d8c6d81f66af87
+
+
+extra:
+  sources:
+    libatomic_ops:
+      fn: libatomic_ops-7.4.2.tar.gz
+      url: http://www.ivmaisoft.com/_bin/atomic_ops/libatomic_ops-7.4.2.tar.gz
+      md5: 1d6538604b314d2fccdf86915e5c0857
+
+requirements:
+  build:
+  run:
+
+about:
+  home: http://hboehm.info/gc
+  summary: "The Boehm-Demers-Weiser conservative C/C++ Garbage Collector (libgc, bdwgc, boehmgc)"
+  license: GPL
