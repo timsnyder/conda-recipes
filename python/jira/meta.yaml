@@ -1,10 +1,11 @@
 package:
   name: jira
-  version: !!str 0.43
+  version: !!str 1.0.5
 
 source:
-  git_rev: 0.43
-  git_url: https://github.com/pycontribs/jira.git
+  fn: jira-1.0.5.tar.gz
+  url: https://github.com/pycontribs/jira/archive/1.0.5.tar.gz
+  md5: 697249262b9b82d2303b5f39f6e0dfde
 
 #build:
   # If this is a new build for the same version, increment the build
@@ -21,8 +22,24 @@ requirements:
     - setuptools >=0.8.0
     - requests-toolbelt
     - ordereddict
-  run:
+    - pycrypto
     - python
+  run:
+    - requests >=2.6.0
+    - requests-oauthlib >=0.3.3
+    - requests-kerberos
+    - tlslite >=0.4.4
+    - six >=1.9.0
+    - setuptools >=0.8.0
+    - requests-toolbelt
+    - ordereddict
+    - pycrypto
+    - python
+test:
+  imports:
+    - jira
+  commands:
+    - jirashell -h
 
 about:
   home: http://jira.readthedocs.io/en/latest
